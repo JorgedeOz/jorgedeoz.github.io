@@ -4,8 +4,13 @@
   <meta charset="UTF-8">
   <title>Fun Math Tables Game</title>
   <style>
+    :root {
+      --app-font-stack: "Comic Sans MS", "Comic Neue", "Trebuchet MS", "Segoe UI", sans-serif;
+    }
+
     body {
-      font-family: "Comic Sans MS", cursive, sans-serif;
+      font-family: var(--app-font-stack);
+      font-style: normal;
       text-align: center;
       margin-top: 30px;
       background: linear-gradient(to bottom, #e5e5e5, #dfa2cf);
@@ -13,6 +18,21 @@
       background-attachment: fixed;
       background-size: cover;
       color: #333;
+    }
+
+    h1,
+    h2,
+    h3,
+    p,
+    div,
+    span,
+    label,
+    button,
+    input,
+    select,
+    textarea {
+      font-family: var(--app-font-stack);
+      font-style: normal;
     }
     h1 {
       font-size: 2.5em;
@@ -836,7 +856,15 @@
   <div id="score"></div>
   <div id="timer">⏱️ Time: --</div>
   <div id="question"></div>
-  <input type="number" id="answer" placeholder="Type answer here">
+  <input
+    type="text"
+    id="answer"
+    placeholder="Type answer here"
+    inputmode="numeric"
+    pattern="[0-9]*"
+    autocomplete="off"
+    enterkeyhint="done"
+  >
   <button id="submitAnswer" onclick="checkAnswer()">✅ Submit</button>
   <button id="restart" onclick="restartGame()">🔄 Restart Round</button>
   <div id="feedback"></div>
@@ -2147,8 +2175,15 @@
       `;
     }
 
+    const answerInput = document.getElementById("answer");
+
+    // Keep answer input strictly digits, including paste/autofill scenarios.
+    answerInput.addEventListener("input", function(event) {
+      event.target.value = event.target.value.replace(/\D+/g, "");
+    });
+
     // Allow Enter key to submit
-    document.getElementById("answer").addEventListener("keyup", function(event) {
+    answerInput.addEventListener("keyup", function(event) {
       if (event.key === "Enter") {
         checkAnswer();
       }
