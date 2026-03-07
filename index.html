@@ -2,6 +2,15 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="Fun Math Game">
+  <link rel="apple-touch-icon" sizes="152x152" href="icons/apple-touch-icon-152.png">
+  <link rel="apple-touch-icon" sizes="167x167" href="icons/apple-touch-icon-167.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="icons/apple-touch-icon-180.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="icons/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="icons/favicon-16.png">
+  <link rel="shortcut icon" href="icons/favicon.png">
   <title>Fun Math Tables Game</title>
   <style>
     :root {
@@ -427,6 +436,21 @@
       text-align: left;
     }
     .session-player-table th { background: #fff8e1; }
+    .session-latest-result {
+      background: #fff8e1;
+      border: 1px solid #ffe0b2;
+      border-radius: 10px;
+      padding: 10px 12px;
+      margin-bottom: 10px;
+    }
+    .session-latest-title {
+      font-weight: bold;
+      color: #e65100;
+      margin-bottom: 6px;
+    }
+    .session-latest-result p {
+      margin: 4px 0;
+    }
     #highScores {
       margin-top: 0;
       text-align: left;
@@ -1050,6 +1074,8 @@
         headerResult: "Result",
         progressLabel: "Table of {n}: {correct}/{total} correct ({accuracy}%)",
         sessionNone: "No completed rounds in this session yet.",
+        latestRoundTitle: "Latest Round Result",
+        cumulativePointsLabel: "Cumulative Points",
         sessionPlayers: "Players",
         sessionRounds: "Total Rounds",
         sessionPoints: "Total Points",
@@ -1066,9 +1092,6 @@
         confirmClearPlayerScores: "Clear session high scores for {player}?",
         confirmClearAllScores: "Clear all session high scores?",
         selectFirstTables: "ℹ️ Selected first {max} table(s) for this difficulty"
-        ,
-        roundCompleteMessage:
-          "🎉 Round complete! <br /> Player: {player}<br />⭐ Score: {points}/{pointsAvailable} <br /> ✅ Correct: {correct}/{total} ({percentage}%)<br />🏆 Total Rounds: {rounds}, <br /> Cumulative Points: {cumulative}"
       },
       es: {
         appTitle: "🎉 Juego Divertido de Tablas 🎉",
@@ -1155,6 +1178,8 @@
         headerResult: "Resultado",
         progressLabel: "Tabla del {n}: {correct}/{total} correctas ({accuracy}%)",
         sessionNone: "No hay rondas completadas en esta sesion.",
+        latestRoundTitle: "Resultado de la ultima ronda",
+        cumulativePointsLabel: "Puntos acumulados",
         sessionPlayers: "Jugadores",
         sessionRounds: "Rondas totales",
         sessionPoints: "Puntos totales",
@@ -1171,9 +1196,6 @@
         confirmClearPlayerScores: "Limpiar mejores puntajes de sesion para {player}?",
         confirmClearAllScores: "Limpiar todos los mejores puntajes de sesion?",
         selectFirstTables: "ℹ️ Se seleccionaron las primeras {max} tabla(s) para esta dificultad"
-        ,
-        roundCompleteMessage:
-          "🎉 Ronda completa! <br /> Jugador: {player}<br />⭐ Puntaje: {points}/{pointsAvailable} <br /> ✅ Correctas: {correct}/{total} ({percentage}%)<br />🏆 Rondas totales: {rounds}, <br /> Puntos acumulados: {cumulative}"
       }
     };
 
@@ -1365,10 +1387,10 @@
 
     function updateActionButtons() {
       const hasCompletedRounds = Array.isArray(roundHistory) && roundHistory.length > 0;
-      const showPostRoundActions = !gameInProgress && hasCompletedRounds;
+      const showPostRoundActions = postRoundMode && hasCompletedRounds;
       document.getElementById("clearSetupBtn").style.display = showPostRoundActions ? "inline-block" : "none";
       document.getElementById("resetGameBtn").style.display = showPostRoundActions ? "inline-block" : "none";
-      document.getElementById("gameControlActions").style.display = postRoundMode ? "none" : (showPostRoundActions || gameInProgress ? "inline-flex" : "none");
+      document.getElementById("gameControlActions").style.display = (showPostRoundActions || gameInProgress) ? "inline-flex" : "none";
       document.getElementById("endRoundActions").style.display = postRoundMode ? "inline-flex" : "none";
       updateSetupStepUI();
       updateViewTableVisibility();
@@ -1823,16 +1845,7 @@
       playSound("roundComplete");
       
       document.getElementById("question").textContent = "";
-      document.getElementById("feedback").innerHTML = tr("roundCompleteMessage", {
-        player: currentPlayer,
-        points: points,
-        pointsAvailable: roundData.pointsAvailable,
-        correct: correctAnswers,
-        total: totalQuestions,
-        percentage: roundData.percentage,
-        rounds: roundHistory.length,
-        cumulative: cumulativePoints
-      });
+      document.getElementById("feedback").textContent = "";
       document.getElementById("score").textContent = "";
       document.getElementById("round").textContent = "";
       postRoundMode = true;
@@ -2125,6 +2138,15 @@
       }, 0);
 
       const bestRound = sessionHighScores.length > 0 ? sessionHighScores[0] : null;
+      let latestRound = null;
+
+      if (currentPlayer && Array.isArray(playerRoundHistory[currentPlayer]) && playerRoundHistory[currentPlayer].length > 0) {
+        latestRound = playerRoundHistory[currentPlayer][playerRoundHistory[currentPlayer].length - 1];
+      } else {
+        const fallbackPlayer = playersWithRounds[0];
+        const fallbackRounds = playerRoundHistory[fallbackPlayer] || [];
+        latestRound = fallbackRounds[fallbackRounds.length - 1] || null;
+      }
 
       const playerRows = playersWithRounds.map((name) => {
         const rounds = playerRoundHistory[name];
@@ -2152,8 +2174,19 @@
       }).join("");
 
       const sessionHeaders = tr("sessionHeaders");
+      const latestResultMarkup = latestRound ? `
+        <div class="session-latest-result">
+          <div class="session-latest-title">${tr("latestRoundTitle")}</div>
+          <p><strong>${tr("labelPlayer")}:</strong> ${latestRound.player}</p>
+          <p><strong>${tr("labelScore")}:</strong> ${latestRound.points}/${latestRound.pointsAvailable || (latestRound.totalQuestions * 3)}</p>
+          <p><strong>${tr("labelCorrect")}:</strong> ${latestRound.correctAnswers}/${latestRound.totalQuestions} (${latestRound.percentage}%)</p>
+          <p><strong>${tr("sessionRounds")}:</strong> ${(playerRoundHistory[latestRound.player] || []).length}</p>
+          <p><strong>${tr("cumulativePointsLabel")}:</strong> ${playerCumulativePoints[latestRound.player] || 0}</p>
+        </div>
+      ` : "";
 
       summaryEl.innerHTML = `
+        ${latestResultMarkup}
         <p><strong>${tr("sessionPlayers")}:</strong> ${playersWithRounds.length}</p>
         <p><strong>${tr("sessionRounds")}:</strong> ${totalRoundsSession}</p>
         <p><strong>${tr("sessionPoints")}:</strong> ${totalPointsSession}/${totalMaxPointsSession}</p>
