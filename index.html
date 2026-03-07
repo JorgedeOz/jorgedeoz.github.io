@@ -266,6 +266,14 @@
     #submitAnswer {
       display: none;
     }
+    #answer {
+      margin-left: auto;
+      margin-right: auto;
+    }
+    #submitAnswer {
+      margin-left: auto;
+      margin-right: auto;
+    }
     button {
       font-size: 1.2em;
       padding: 10px 20px;
@@ -437,19 +445,52 @@
     }
     .session-player-table th { background: #fff8e1; }
     .session-latest-result {
-      background: #fff8e1;
-      border: 1px solid #ffe0b2;
+      background: #f7f0df;
+      border: 1px solid #f3dfb8;
       border-radius: 10px;
-      padding: 10px 12px;
-      margin-bottom: 10px;
+      padding: 10px;
+      margin-bottom: 0;
     }
     .session-latest-title {
       font-weight: bold;
       color: #e65100;
-      margin-bottom: 6px;
+      margin-bottom: 8px;
+      font-size: 1.05em;
     }
-    .session-latest-result p {
-      margin: 4px 0;
+    .session-latest-columns {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px 18px;
+    }
+    .session-latest-column {
+      display: grid;
+      gap: 8px;
+    }
+    .session-latest-item {
+      font-size: 1em;
+      color: #5f4a35;
+      line-height: 1.25;
+    }
+    .session-latest-item strong {
+      color: #6b533a;
+      margin-right: 4px;
+      font-weight: 700;
+    }
+    .session-score-chip {
+      display: inline-block;
+      background: #ececec;
+      border-radius: 6px;
+      padding: 2px 8px;
+      font-weight: bold;
+      color: #3d3d3d;
+    }
+    .session-best-line {
+      margin-top: 2px;
+      font-size: 1em;
+      color: #5d4037;
+    }
+    .session-best-line strong {
+      color: #6b533a;
     }
     #highScores {
       margin-top: 0;
@@ -978,6 +1019,7 @@
     let previousSetupStep = 1;
     let postRoundMode = false;
     let audioCtx = null;
+    let audioUnlocked = false;
     let currentLanguage = "en";
     const HIGH_SCORE_KEY = "mathGameSessionHighScores";
     let sessionHighScores = loadHighScores();
@@ -1063,9 +1105,11 @@
         roundWord: "Round",
         labelPlayer: "Player",
         labelDifficulty: "Difficulty",
+        labelDifficulties: "Difficulties",
         labelTable: "Table",
         labelScore: "Score",
         labelCorrect: "Correct",
+        labelAvgAccuracy: "Avg Accuracy",
         headerQuestion: "Question",
         headerYourAnswer: "Your Answer",
         headerCorrectAnswer: "Correct Answer",
@@ -1167,9 +1211,11 @@
         roundWord: "Ronda",
         labelPlayer: "Jugador",
         labelDifficulty: "Dificultad",
+        labelDifficulties: "Dificultades",
         labelTable: "Tabla",
         labelScore: "Puntaje",
         labelCorrect: "Correctas",
+        labelAvgAccuracy: "Precision promedio",
         headerQuestion: "Pregunta",
         headerYourAnswer: "Tu respuesta",
         headerCorrectAnswer: "Respuesta correcta",
@@ -1563,6 +1609,55 @@
       return audioCtx;
     }
 
+    function unlockAudioContext() {
+      const ctx = getAudioContext();
+      if (!ctx || audioUnlocked) {
+        return;
+      }
+
+      const primeIfRunning = () => {
+        if (!ctx || ctx.state !== "running" || audioUnlocked) {
+          return;
+        }
+        audioUnlocked = true;
+
+        // Prime iOS Safari audio pipeline with an inaudible tone.
+        const oscillator = ctx.createOscillator();
+        const gainNode = ctx.createGain();
+        gainNode.gain.setValueAtTime(0.0001, ctx.currentTime);
+        oscillator.connect(gainNode);
+        gainNode.connect(ctx.destination);
+        oscillator.start(ctx.currentTime);
+        oscillator.stop(ctx.currentTime + 0.02);
+      };
+
+      if (ctx.state === "running") {
+        primeIfRunning();
+        return;
+      }
+
+      ctx.resume().then(primeIfRunning).catch(() => {
+        // Resume can fail when not triggered by a trusted user gesture.
+      });
+    }
+
+    function registerAudioUnlockHandlers() {
+      const events = ["touchstart", "pointerdown", "keydown"];
+      const onFirstGesture = () => {
+        unlockAudioContext();
+        if (!audioUnlocked) {
+          return;
+        }
+        events.forEach((eventName) => {
+          window.removeEventListener(eventName, onFirstGesture);
+        });
+      };
+
+      events.forEach((eventName) => {
+        window.addEventListener(eventName, onFirstGesture, { passive: true });
+      });
+    }
+
     function playTone(ctx, frequency, startOffset, duration, type, gainValue) {
       const oscillator = ctx.createOscillator();
       const gainNode = ctx.createGain();
@@ -1587,8 +1682,8 @@
       if (!ctx) {
         return;
       }
-      if (ctx.state === "suspended") {
-        ctx.resume();
+      if (ctx.state !== "running") {
+        return;
       }
 
       if (kind === "success") {
@@ -1684,10 +1779,7 @@
       }
 
       setActivePlayer(playerName);
-      const ctx = getAudioContext();
-      if (ctx && ctx.state === "suspended") {
-        ctx.resume();
-      }
+      unlockAudioContext();
       difficultyLevel = parseInt(document.getElementById("difficultyLevel").value, 10) || 1;
       questionTimeLimit = getDifficultySeconds(difficultyLevel);
       selectedTables = getSelectedTables();
@@ -1718,8 +1810,8 @@
       updateActionButtons();
       updateGameInfoVisibility();
       toggleResultsPanels(false);
-      document.getElementById("answer").style.display = "inline-block";
-      document.getElementById("submitAnswer").style.display = "inline-block";
+      document.getElementById("answer").style.display = "block";
+      document.getElementById("submitAnswer").style.display = "block";
       newQuestion();
     }
 
@@ -1919,8 +2011,8 @@
       updateActionButtons();
       updateGameInfoVisibility();
       toggleResultsPanels(false);
-      document.getElementById("answer").style.display = "inline-block";
-      document.getElementById("submitAnswer").style.display = "inline-block";
+      document.getElementById("answer").style.display = "block";
+      document.getElementById("submitAnswer").style.display = "block";
       newQuestion();
     }
 
@@ -2120,23 +2212,6 @@
         return;
       }
 
-      const totalRoundsSession = playersWithRounds.reduce((acc, name) => {
-        return acc + playerRoundHistory[name].length;
-      }, 0);
-
-      const totalPointsSession = playersWithRounds.reduce((acc, name) => {
-        return acc + (playerCumulativePoints[name] || 0);
-      }, 0);
-
-      const totalMaxPointsSession = playersWithRounds.reduce((acc, name) => {
-        const rounds = playerRoundHistory[name] || [];
-        const playerMax = rounds.reduce((roundAcc, item) => {
-          const maxPoints = typeof item.pointsAvailable === "number" ? item.pointsAvailable : (item.totalQuestions || 0) * 3;
-          return roundAcc + maxPoints;
-        }, 0);
-        return acc + playerMax;
-      }, 0);
-
       const bestRound = sessionHighScores.length > 0 ? sessionHighScores[0] : null;
       let latestRound = null;
 
@@ -2148,63 +2223,37 @@
         latestRound = fallbackRounds[fallbackRounds.length - 1] || null;
       }
 
-      const playerRows = playersWithRounds.map((name) => {
-        const rounds = playerRoundHistory[name];
-        const roundsCount = rounds.length;
-        const pointsSum = playerCumulativePoints[name] || 0;
-        const maxPointsSum = rounds.reduce((acc, item) => {
-          const maxPoints = typeof item.pointsAvailable === "number" ? item.pointsAvailable : (item.totalQuestions || 0) * 3;
-          return acc + maxPoints;
-        }, 0);
-        const avgAccuracy = Math.round(
-          rounds.reduce((acc, item) => acc + item.percentage, 0) / roundsCount
-        );
-        const difficulties = Array.from(new Set(rounds.map((item) => {
+      const latestPlayerRounds = latestRound ? (playerRoundHistory[latestRound.player] || []) : [];
+      const latestPlayerAvgAccuracy = latestPlayerRounds.length > 0
+        ? Math.round(latestPlayerRounds.reduce((acc, item) => acc + item.percentage, 0) / latestPlayerRounds.length)
+        : 0;
+      const latestPlayerDifficulties = latestRound
+        ? Array.from(new Set(latestPlayerRounds.map((item) => {
           return getDifficultyLabel(item.difficultyLevel);
-        })));
-        return `
-          <tr>
-            <td>${name}</td>
-            <td>${roundsCount}</td>
-            <td>${pointsSum}/${maxPointsSum}</td>
-            <td>${avgAccuracy}%</td>
-            <td>${difficulties.join(", ")}</td>
-          </tr>
-        `;
-      }).join("");
+        }))).join(", ")
+        : tr("notAvailable");
 
-      const sessionHeaders = tr("sessionHeaders");
       const latestResultMarkup = latestRound ? `
         <div class="session-latest-result">
           <div class="session-latest-title">${tr("latestRoundTitle")}</div>
-          <p><strong>${tr("labelPlayer")}:</strong> ${latestRound.player}</p>
-          <p><strong>${tr("labelScore")}:</strong> ${latestRound.points}/${latestRound.pointsAvailable || (latestRound.totalQuestions * 3)}</p>
-          <p><strong>${tr("labelCorrect")}:</strong> ${latestRound.correctAnswers}/${latestRound.totalQuestions} (${latestRound.percentage}%)</p>
-          <p><strong>${tr("sessionRounds")}:</strong> ${(playerRoundHistory[latestRound.player] || []).length}</p>
-          <p><strong>${tr("cumulativePointsLabel")}:</strong> ${playerCumulativePoints[latestRound.player] || 0}</p>
+          <div class="session-latest-columns">
+            <div class="session-latest-column">
+              <div class="session-latest-item"><strong>${tr("labelPlayer")}:</strong> ${latestRound.player}</div>
+              <div class="session-latest-item"><strong>${tr("labelScore")}:</strong> <span class="session-score-chip">${latestRound.points}/${latestRound.pointsAvailable || (latestRound.totalQuestions * 3)}</span></div>
+              <div class="session-latest-item"><strong>${tr("labelAvgAccuracy")}:</strong> ${latestPlayerAvgAccuracy}%</div>
+              <div class="session-best-line"><strong>${tr("sessionBest")}:</strong> ${bestRound ? `${bestRound.player} (${bestRound.points}/${typeof bestRound.pointsAvailable === "number" ? bestRound.pointsAvailable : "?"} pts) - ${getDifficultyLabel(bestRound.difficultyLevel)}` : tr("notAvailable")}</div>
+            </div>
+            <div class="session-latest-column">
+              <div class="session-latest-item"><strong>${tr("labelDifficulties")}:</strong> ${latestPlayerDifficulties}</div>
+              <div class="session-latest-item"><strong>${tr("labelCorrect")}:</strong> ${latestRound.correctAnswers}/${latestRound.totalQuestions} (${latestRound.percentage}%)</div>
+              <div class="session-latest-item"><strong>${tr("sessionRounds")}:</strong> ${(playerRoundHistory[latestRound.player] || []).length}</div>
+            </div>
+          </div>
         </div>
       ` : "";
 
       summaryEl.innerHTML = `
         ${latestResultMarkup}
-        <p><strong>${tr("sessionPlayers")}:</strong> ${playersWithRounds.length}</p>
-        <p><strong>${tr("sessionRounds")}:</strong> ${totalRoundsSession}</p>
-        <p><strong>${tr("sessionPoints")}:</strong> ${totalPointsSession}/${totalMaxPointsSession}</p>
-        <p><strong>${tr("sessionBest")}:</strong> ${bestRound ? `${tr("sessionBestWithPoints", { player: bestRound.player, earned: bestRound.points, max: typeof bestRound.pointsAvailable === "number" ? bestRound.pointsAvailable : "?" })} - ${getDifficultyLabel(bestRound.difficultyLevel)}` : tr("notAvailable")}</p>
-        <table class="session-player-table">
-          <thead>
-            <tr>
-              <th>${sessionHeaders[0]}</th>
-              <th>${sessionHeaders[1]}</th>
-              <th>${sessionHeaders[2]}</th>
-              <th>${sessionHeaders[3]}</th>
-              <th>${sessionHeaders[4]}</th>
-            </tr>
-          </thead>
-          <tbody>
-            ${playerRows}
-          </tbody>
-        </table>
       `;
     }
 
@@ -2505,5 +2554,6 @@
       }
     }
 
+    registerAudioUnlockHandlers();
     setLanguage("en");
   </script>
