@@ -453,8 +453,14 @@ p {
 .about-section {
   display: grid;
   grid-template-columns: 0.9fr 1.1fr;
+  align-items: start;
   gap: 5rem;
   border-top: 1px solid var(--line);
+}
+
+.about-section .section-heading {
+  position: sticky;
+  top: 7rem;
 }
 
 .about-section .section-heading .hero-actions {
@@ -592,7 +598,7 @@ p {
 
 .experience-section .section-heading {
   position: sticky;
-  top: 2rem;
+  top: 7rem;
 }
 
 .heading-note {
@@ -1009,6 +1015,10 @@ p {
   }
 
   .experience-section .section-heading {
+    position: static;
+  }
+
+  .about-section .section-heading {
     position: static;
   }
 
