@@ -1,0 +1,481 @@
+{
+  "profile": {
+    "name": "Jorge Eduardo López Hernández",
+    "shortName": "Jorge López Hernández",
+    "title": "Senior Backend Engineer | Cloud Distributed Systems | AI | C#/.NET | Microservices | Azure | AWS",
+    "location": "Monterrey, Mexico",
+    "summary": "Senior Backend Engineer with 14+ years of experience designing and building scalable software systems, cloud-native services, APIs, and distributed architectures.",
+    "email": "jorgedeoz1989@gmail.com",
+    "phone": "+526691500816",
+    "phoneDisplay": "+52 669 150 0816",
+    "linkedin": "https://www.linkedin.com/in/jorgeeduardolopez1989/",
+    "resumeFile": "Resume.pdf",
+    "copyrightYear": "2026"
+  },
+  "about": {
+    "heading": ["Thoughtful engineering.", "Systems built to last."],
+    "paragraphs": [
+      "I'm a Senior Backend Engineer with 14+ years of experience designing and building scalable software systems, cloud-native services, APIs, and distributed architectures. My core expertise is C#/.NET, backend architecture, microservices, REST APIs, SQL Server, PostgreSQL, MongoDB, and cloud platforms including Azure and AWS. More recently, I've expanded into Go, Python, React, and AI-assisted engineering while working on SaaS and payroll platforms. I enjoy solving complex backend and architecture problems — modernizing legacy systems, designing event-driven services, building reliable APIs, improving observability, and developing systems that can scale.",
+      "I've worked with distributed teams across the US, Canada, UK, and Latin America, building software for SaaS, payroll, real estate, logistics, enterprise, and other technology-driven products. I'm interested in Senior Backend, Senior Software Engineer, Cloud, Platform, Distributed Systems, and AI-enabled engineering opportunities."
+    ],
+    "coreAreas": [
+      "Backend Engineering: C#, .NET, Go, Python, REST APIs, Microservices",
+      "Distributed Systems: Event-driven architecture, Kafka, messaging, scalability",
+      "Cloud: AWS, Azure, Docker, Kubernetes, CI/CD",
+      "Data: SQL Server, PostgreSQL, MongoDB, Cosmos DB, Redis, OpenSearch",
+      "Engineering: System modernization, API architecture, observability, performance",
+      "AI-Native Development: Cursor, Claude, GitHub Copilot, CodeRabbit, AI-assisted development and technical workflows"
+    ],
+    "focusAreas": [
+      "Distributed systems",
+      "Cloud-native services",
+      "Event-driven architecture",
+      "System modernization",
+      "Observability",
+      "AI-assisted engineering"
+    ],
+    "techStack": [
+      "C#",
+      ".NET",
+      "Go",
+      "Python",
+      "AWS",
+      "Azure",
+      "Kafka",
+      "Docker",
+      "Kubernetes",
+      "PostgreSQL",
+      "SQL Server",
+      "MongoDB",
+      "React",
+      "AI"
+    ]
+  },
+  "whatIDo": {
+    "heading": ["From architecture", "to reliable delivery."],
+    "items": [
+      {
+        "title": "Backend Architecture",
+        "description": "Designing scalable APIs, services and distributed systems."
+      },
+      {
+        "title": "Cloud & Modernization",
+        "description": "Migrating legacy applications toward cloud-native architectures."
+      },
+      {
+        "title": "Distributed Systems",
+        "description": "Event-driven architectures, Kafka, messaging and asynchronous processing."
+      },
+      {
+        "title": "Performance & Reliability",
+        "description": "Database optimization, observability, monitoring and production reliability."
+      },
+      {
+        "title": "AI-Assisted Engineering",
+        "description": "Using modern AI tools to accelerate development, architecture, documentation and code quality."
+      }
+    ]
+  },
+  "experience": [
+    {
+      "role": "Senior Software Engineer",
+      "company": "EarnIn",
+      "companyUrl": "https://www.earnin.com/",
+      "start": { "label": "May 2026", "datetime": "2026-05" },
+      "end": { "label": "Present" },
+      "location": "Remote · Mexico / California · USA",
+      "highlights": [
+        {
+          "label": "Full-Stack & Backend SaaS Development",
+          "text": "Designed and developed scalable backend services in Go and Python for a SaaS expense management platform within a new payroll product. Built and maintained React/Node.js components supporting backend-driven SaaS workflows."
+        },
+        {
+          "label": "System Modernization",
+          "text": "Modernized legacy C#/.NET payroll services by migrating functionality toward cloud-native microservices on AWS using Docker and OpenAPI."
+        },
+        {
+          "label": "AI-Assisted Engineering",
+          "text": "Used Cursor, Claude, and GitHub Copilot to accelerate backend logic, technical documentation (PRDs), and database schema modeling (ERDs)."
+        },
+        {
+          "label": "Code Quality & CI/CD",
+          "text": "Built automated GitHub Actions CI/CD pipelines and integrated CodeRabbit and SonarQube Cloud to enforce code quality and security standards."
+        },
+        {
+          "label": "DevOps & Mobile Support",
+          "text": "Supported macOS and mobile development workflows through Bash/Zsh automation and targeted iOS/Android updates."
+        }
+      ],
+      "technologies": [
+        "Go", "Python", ".NET", "AWS", "Docker", "React", "Node.js", "OpenAPI",
+        "GitHub Actions", "Cursor", "Claude", "GitHub Copilot", "CodeRabbit", "SonarQube"
+      ]
+    },
+    {
+      "role": "Senior Software Engineer",
+      "company": "TeamStation AI",
+      "companyUrl": "https://teamstation.dev/",
+      "client": "Attom Data",
+      "clientUrl": "https://www.attomdata.com/",
+      "start": { "label": "Nov 2025", "datetime": "2025-11" },
+      "end": { "label": "Jun 2026", "datetime": "2026-06" },
+      "locationPrefix": "Contract · ",
+      "location": "Remote",
+      "highlights": [
+        {
+          "label": "Platform Engineering",
+          "text": "Developed a high-performance web application to manage, search, and compare property data across the US real estate market."
+        },
+        {
+          "label": "Database & Search Optimization",
+          "text": "Implemented OpenSearch alongside relational SQL Server databases to support multi-faceted, low-latency search."
+        },
+        {
+          "label": "Full-Stack Services",
+          "text": "Built RESTful backend APIs and responsive user interfaces using ASP.NET Core, TypeScript, Bootstrap, and SQL Server."
+        },
+        {
+          "label": "Cloud Infrastructure & Monitoring",
+          "text": "Deployed Azure cloud services using Azure DevOps CI/CD pipelines and integrated Kibana and Datadog for operational monitoring."
+        }
+      ],
+      "technologies": [
+        "ASP.NET Core", ".NET Core", "C#", "TypeScript", "OpenSearch", "SQL Server",
+        "Azure", "Azure Pipelines", "AWS", "Kibana", "Datadog"
+      ]
+    },
+    {
+      "role": "Senior Software Engineer",
+      "company": "Charger Logistics",
+      "companyUrl": "https://chargerlogistics.com/en",
+      "start": { "label": "Jun 2023", "datetime": "2023-06" },
+      "end": { "label": "Sep 2025", "datetime": "2025-09" },
+      "location": "Remote · Monterrey · Mexico / Brampton · Canada",
+      "highlights": [
+        {
+          "label": "Event-Driven Microservices",
+          "text": "Designed and developed highly scalable, event-driven microservices using C#/.NET Core and Confluent Kafka on Microsoft Azure."
+        },
+        {
+          "label": "Database & Legacy Modernization",
+          "text": "Modernized legacy ASP.NET MVC applications to .NET Core REST APIs and migrated persistence layers from SQL Server to MongoDB and PostgreSQL."
+        },
+        {
+          "label": "API Architecture",
+          "text": "Architected robust RESTful APIs for secure integrations with third-party vendor systems."
+        },
+        {
+          "label": "Observability & Deployment",
+          "text": "Improved production observability and reliability using Kibana and Datadog across Docker and Kubernetes environments."
+        }
+      ],
+      "technologies": [
+        ".NET Core", "Confluent Kafka", "SQL Server", "MongoDB", "PostgreSQL",
+        "Azure", "Docker", "Kubernetes", "Kibana", "Datadog", "Redis"
+      ]
+    },
+    {
+      "role": "Software Engineer",
+      "company": "Definity First",
+      "companyUrl": "https://www.definity.io/",
+      "client": "Insellerate",
+      "clientUrl": "https://insellerate.com/",
+      "start": { "label": "Oct 2021", "datetime": "2021-10" },
+      "end": { "label": "Jun 2023", "datetime": "2023-06" },
+      "locationPrefix": "Remote · Monterrey · Mexico · Client: ",
+      "highlights": [
+        {
+          "label": "Backend & Database Architecture",
+          "text": "Developed scalable C#/.NET backend infrastructure and SQL Server data operations using LINQ and Entity Framework."
+        },
+        {
+          "label": "Frontend Engineering",
+          "text": "Built responsive front-end views using AngularJS, Kendo UI, and Bootstrap."
+        },
+        {
+          "label": "Enterprise Integrations",
+          "text": "Integrated Azure Active Directory for authentication/SSO and real-time Power BI reports."
+        },
+        {
+          "label": "Asynchronous Messaging",
+          "text": "Implemented a publish/subscribe architecture with NServiceBus to handle asynchronous messaging and improve system resilience."
+        }
+      ],
+      "technologies": [
+        ".NET Framework", ".NET Web API", "SQL Server", "Entity Framework", "LINQ",
+        "AngularJS", "Kendo UI", "Bootstrap", "Azure", "NServiceBus", "Swagger"
+      ]
+    },
+    {
+      "role": "Software Engineer",
+      "company": "NICE inContact",
+      "companyUrl": "https://www.nice.com/",
+      "start": { "label": "Sep 2020", "datetime": "2020-09" },
+      "end": { "label": "Sep 2021", "datetime": "2021-09" },
+      "location": "Sandy · Utah · USA",
+      "highlights": [
+        {
+          "label": "Database Optimization",
+          "text": "Optimized persistence and business logic by developing and maintaining complex SQL Server stored procedures, views, and functions."
+        },
+        {
+          "label": "Core ACD Module Development",
+          "text": "Worked on .NET, C#, and ASP.NET contact-center applications, integrating modular Angular components for frontend navigation."
+        }
+      ],
+      "technologies": [
+        "ASP.NET", ".NET Framework 4.8", "SQL Server", "PL/SQL", "Angular",
+        "AngularJS", "Node.js", "JavaScript", "Git", "TFS"
+      ]
+    },
+    {
+      "role": "Software Engineer",
+      "company": "Marshmallow Laser Feast",
+      "companyUrl": "https://marshmallowlaserfeast.com/",
+      "start": { "label": "Apr 2021", "datetime": "2021-04" },
+      "end": { "label": "Jul 2021", "datetime": "2021-07" },
+      "location": "Contract · Remote · London · UK",
+      "highlights": [
+        {
+          "label": "Low-Latency Communication",
+          "text": "Engineered real-time communication APIs using NetMQ and WebSockets for low-latency applications."
+        },
+        {
+          "label": "Polyglot Microservices",
+          "text": "Developed backend services using .NET Core console apps, .NET Standard libraries, and Node.js, with CI/CD using Docker and Jenkins."
+        }
+      ],
+      "technologies": [
+        ".NET Core", "Node.js", "WebSockets", "NetMQ", "Docker", "Jenkins", "Bitbucket", "Git"
+      ]
+    },
+    {
+      "role": "Software Engineer",
+      "company": "The VOID VR",
+      "companyUrl": "https://www.thevoid.com/",
+      "start": { "label": "May 2019", "datetime": "2019-05" },
+      "end": { "label": "Sep 2020", "datetime": "2020-09" },
+      "location": "Lindon · Utah · USA",
+      "highlights": [
+        {
+          "label": "Backend Refactoring",
+          "text": "Refactored legacy web applications to .NET Core MVC and implemented real-time communication services with SignalR Web APIs."
+        },
+        {
+          "label": "Frontend & DevOps",
+          "text": "Built responsive Angular/TypeScript frontends and containerized services with Docker and Kubernetes using Azure DevOps CI/CD."
+        }
+      ],
+      "technologies": [
+        ".NET Core", "ASP.NET Core Web API", "SignalR", "Angular", "TypeScript",
+        "Docker", "Kubernetes", "Azure DevOps", "Octopus Deploy"
+      ]
+    },
+    {
+      "role": "Software Engineer",
+      "company": "Epicor Software",
+      "companyUrl": "https://www.epicor.com/en/",
+      "start": { "label": "Nov 2018", "datetime": "2018-11" },
+      "end": { "label": "May 2019", "datetime": "2019-05" },
+      "location": "Monterrey · Mexico",
+      "highlights": [
+        {
+          "label": "Cloud Microservices & NoSQL",
+          "text": "Architected .NET Core microservices using Azure Service Fabric and optimized Azure Cosmos DB structures for high-throughput ERP transactions."
+        },
+        {
+          "label": "Legacy Refactoring",
+          "text": "Migrated legacy Windows Forms workflows into decoupled .NET Core Web API services."
+        }
+      ],
+      "technologies": [
+        ".NET Core", "ASP.NET Core Web API", "Azure Service Fabric", "Azure Cosmos DB",
+        "Angular", "TypeScript", "SignalR", "Azure DevOps"
+      ]
+    },
+    {
+      "role": "Software Engineer",
+      "company": "Genomi-k",
+      "companyUrl": "https://genomi-k.com/",
+      "start": { "label": "Apr 2015", "datetime": "2015-04" },
+      "end": { "label": "Nov 2018", "datetime": "2018-11" },
+      "location": "Monterrey · Mexico",
+      "highlights": [
+        {
+          "label": "Cloud & Migration",
+          "text": "Spearheaded migration of legacy web systems to Node.js, Angular, and AWS Lambda serverless functions."
+        },
+        {
+          "label": "Full-Lifecycle Software Development",
+          "text": "Led the software lifecycle for financial and accounting platforms, from requirements and design through development, UAT, and production deployment."
+        },
+        {
+          "label": "Database Engineering & Architecture",
+          "text": "Designed normalized SQL Server schemas and complex stored procedures for financial reporting and data management."
+        },
+        {
+          "label": "Backend Development & Modernization",
+          "text": "Built MVC backend architectures, administration panels, and reusable ColdFusion/SQL Server libraries, integrating AJAX and JSON into legacy modules."
+        },
+        {
+          "label": "Frontend & Responsive UI",
+          "text": "Engineered responsive interfaces using JavaScript, jQuery, and Bootstrap."
+        },
+        {
+          "label": "System Administration & DevOps",
+          "text": "Managed SVN versioning, production database releases, server availability, and IIS hosting."
+        }
+      ],
+      "technologies": [
+        "SQL Server", "Node.js", "Angular", "AWS Lambda", "S3", "ColdFusion",
+        "JavaScript", "jQuery", "HTML", "CSS", "SVN", "JSON", "AJAX"
+      ]
+    },
+    {
+      "role": "Software Engineer",
+      "company": "Tiempo Development",
+      "companyUrl": "https://www.3pillar.ai/",
+      "start": { "label": "Sep 2014", "datetime": "2014-09" },
+      "end": { "label": "Apr 2015", "datetime": "2015-04" },
+      "location": "Monterrey · Mexico",
+      "highlights": [
+        {
+          "label": "Full-Stack & Multiparadigm Development",
+          "text": "Developed and maintained candidate assessment and job-simulation platforms across web, desktop, and background services using ASP.NET, Visual Basic .NET, and Windows Forms."
+        },
+        {
+          "label": "Database & Data Engineering",
+          "text": "Designed relational schemas using LLBLGen ORM, optimized SQL Server stored procedures, and built automated data-export pipelines for reporting and analytics."
+        },
+        {
+          "label": "System Architecture & Modernization",
+          "text": "Refactored legacy applications into MVC patterns, defined scalable architectures for new releases, and hosted web applications on IIS."
+        },
+        {
+          "label": "Agile Collaboration & Client Integration",
+          "text": "Partnered with client teams including FurstPerson and Dish Network under Scrum to gather requirements, set sprint goals, and maintain reliable version control with SVN."
+        }
+      ],
+      "technologies": [
+        "ASP.NET", "C#", "LLBLGen", "Visual Basic .NET", "SVN", "JavaScript",
+        "jQuery", "HTML", "CSS", "SQL Server"
+      ]
+    },
+    {
+      "role": "Software Engineer",
+      "company": "Clariti WRP Mexico",
+      "companyUrl": "https://www.clariti.mx/",
+      "start": { "label": "Nov 2013", "datetime": "2013-11" },
+      "end": { "label": "Sep 2014", "datetime": "2014-09" },
+      "location": "Culiacán · Mexico",
+      "highlights": [
+        {
+          "label": "Mobile Application Engineering",
+          "text": "Engineered native Android applications with GPS location tracking, Bluetooth ticket printing, offline SQLite storage, and server synchronization."
+        },
+        {
+          "label": "Full-Stack & Desktop Solutions",
+          "text": "Developed WPF cashier applications and web administration portals using ASP.NET, C#, Web API, LINQ, and Kendo UI."
+        },
+        {
+          "label": "Database & Data Pipeline Optimization",
+          "text": "Designed SQL Server schemas and Windows Services for high-volume transaction processing and optimized stored procedures."
+        },
+        {
+          "label": "Legacy Modernization & Architecture",
+          "text": "Modernized Android and desktop workflows and established RESTful APIs for cross-platform communication."
+        }
+      ],
+      "technologies": [
+        "ASP.NET", "C#", "ASP.NET Web API", "WPF", "Team Foundation Server",
+        "JavaScript", "jQuery", "Kendo UI", "HTML", "CSS", "SQL Server", "Android", "Java"
+      ]
+    },
+    {
+      "role": "Software Engineer",
+      "company": "Red Rabbit",
+      "companyUrl": "https://www.redrabbit.mx/",
+      "start": { "label": "Mar 2013", "datetime": "2013-03" },
+      "end": { "label": "Nov 2013", "datetime": "2013-11" },
+      "location": "Culiacán · Mexico",
+      "highlights": [
+        {
+          "label": "Full-Stack Web Development",
+          "text": "Developed enterprise web applications using ColdFusion, custom jQuery components, and interactive frontend interfaces."
+        },
+        {
+          "label": "Database Engineering",
+          "text": "Created and maintained SQL Server stored procedures for business logic and backend data operations."
+        },
+        {
+          "label": "Mobile & Architecture Modernization",
+          "text": "Engineered native Android testing applications and designed asynchronous, AJAX-driven web architectures."
+        }
+      ],
+      "technologies": [
+        "ColdFusion", "SQL Server", "SVN", "JavaScript", "jQuery", "Kendo UI", "HTML", "CSS"
+      ]
+    },
+    {
+      "role": "Software Engineer",
+      "company": "UPC Technologies",
+      "companyUrl": "https://upctechnologies.com/en/",
+      "start": { "label": "Mar 2011", "datetime": "2011-03" },
+      "end": { "label": "Mar 2013", "datetime": "2013-03" },
+      "location": "Mazatlán · Mexico",
+      "highlights": [
+        {
+          "label": "Full-Stack & Desktop ERP Engineering",
+          "text": "Architected and maintained accounting, payroll, and web ERP platforms using C#, ASP.NET, Delphi, and Windows Forms."
+        },
+        {
+          "label": "Cross-Platform Mobile Development",
+          "text": "Engineered Android and iOS applications, redesigning interfaces and features for media portals and enterprise clients."
+        },
+        {
+          "label": "Database & Billing Engine Systems",
+          "text": "Built electronic billing systems across SQL Server and MySQL, with PHP and Delphi APIs to synchronize third-party software."
+        },
+        {
+          "label": "Web Engineering & Client Solutions",
+          "text": "Developed customer-facing web applications and media portals using PHP, Ext JS, jQuery, HTML, and CSS."
+        }
+      ],
+      "technologies": [
+        "PHP", "SQL Server", "MySQL", "HTML", "CSS", "JavaScript", "jQuery", "Ext JS",
+        "Delphi", "C#", "Windows Forms", "iOS", "Objective-C", "Android", "ASP.NET", "Telerik"
+      ]
+    }
+  ],
+  "skills": [
+    {
+      "category": "Backend & architecture",
+      "items": ["C#", ".NET Core", "ASP.NET Core", ".NET Framework", "Entity Framework Core", "LINQ", "REST APIs", "Microservices", "OpenAPI", "Swagger"]
+    },
+    {
+      "category": "Data & search",
+      "items": ["SQL Server", "PostgreSQL", "MongoDB", "Azure Cosmos DB", "MySQL", "OpenSearch", "Redis"]
+    },
+    {
+      "category": "Cloud & DevOps",
+      "items": ["Azure", "AWS", "Docker", "Kubernetes", "GitHub Actions", "Azure DevOps", "Kafka", "Jenkins"]
+    },
+    {
+      "category": "Frontend & tools",
+      "items": ["React", "Angular", "Node.js", "TypeScript", "JavaScript", "Bootstrap", "HTML", "CSS/Sass", "Cursor", "Claude", "GitHub Copilot", "CodeRabbit", "SonarQube Cloud"]
+    }
+  ],
+  "education": {
+    "degree": "B.S. in Computer Science",
+    "institution": "Universidad Politécnica de Sinaloa",
+    "note": "Professional license issued"
+  },
+  "languages": [
+    { "name": "Spanish", "proficiency": "Native" },
+    { "name": "English", "proficiency": "Fluent" }
+  ],
+  "contact": {
+    "heading": ["Let’s build something", "meaningful."],
+    "description": "For engineering opportunities and collaborations · feel free to reach out."
+  }
+}
