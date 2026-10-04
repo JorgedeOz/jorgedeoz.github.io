@@ -15,13 +15,15 @@
   },
   "about": {
     "paragraphs": [
-      "Senior Backend Engineer with 14+ years of experience designing and building scalable software systems, cloud-native services, APIs, and distributed architectures. My core expertise is C#/.NET, backend architecture, microservices, REST APIs, SQL Server, PostgreSQL, MongoDB, and cloud platforms including Azure and AWS. More recently, I've expanded into Go, Python, React, and AI-assisted engineering while working on SaaS and payroll platforms. I enjoy solving complex backend and architecture problems — modernizing legacy systems, designing event-driven services, building reliable APIs, improving observability, and developing systems that can scale.",
-      "I've worked with distributed teams across the US, Canada, UK, and Latin America, building software for SaaS, payroll, real estate, logistics, enterprise, and other technology-driven products. I'm interested in Senior Backend, Senior Software Engineer, Cloud, Platform, Distributed Systems, and AI-enabled engineering opportunities."
+      "Senior Backend Engineer with 14+ years of experience designing and building scalable software systems, cloud-native services, APIs, and distributed architectures.",
+      "My core expertise is C#/.NET, backend architecture, microservices, REST APIs, SQL Server, PostgreSQL, MongoDB, and cloud platforms including Azure and AWS. More recently, I've expanded into Go, Python, React, and AI-assisted engineering while working on SaaS platforms.",
+      "I enjoy working on complex backend problems: modernizing legacy systems, designing event-driven architectures, improving reliability and observability, and building services that can scale.",
+      "I've worked with distributed teams across the US, Canada, UK, and Latin America, building software for SaaS, fintech, real estate, logistics, enterprise, and other technology-driven products"
     ],
     "coreAreas": [
-      "Backend Engineering: C#, .NET, Go, Python, REST APIs, Microservices",
-      "Distributed Systems: Event-driven architecture, Kafka, messaging, scalability",
-      "Cloud: AWS, Azure, Docker, Kubernetes, CI/CD",
+      "Backend Engineering: C#, .NET, Cold Fusion, Go, Python, REST APIs, Microservices",
+      "Distributed Systems: Event-driven architecture, Kafka, messaging, scalability, Redis",
+      "Cloud: Azure, AWS, Docker, Kubernetes, CI/CD",
       "Data: SQL Server, PostgreSQL, MongoDB, Cosmos DB, Redis, OpenSearch",
       "Engineering: System modernization, API architecture, observability, performance",
       "AI-Native Development: Cursor, Claude, GitHub Copilot, CodeRabbit, AI-assisted development and technical workflows"
@@ -49,30 +51,6 @@
       "MongoDB",
       "React",
       "AI"
-    ]
-  },
-  "whatIDo": {
-    "items": [
-      {
-        "title": "Backend Architecture",
-        "description": "Designing scalable APIs, services and distributed systems."
-      },
-      {
-        "title": "Cloud & Modernization",
-        "description": "Migrating legacy applications toward cloud-native architectures."
-      },
-      {
-        "title": "Distributed Systems",
-        "description": "Event-driven architectures, Kafka, messaging and asynchronous processing."
-      },
-      {
-        "title": "Performance & Reliability",
-        "description": "Database optimization, observability, monitoring and production reliability."
-      },
-      {
-        "title": "AI-Assisted Engineering",
-        "description": "Using modern AI tools to accelerate development, architecture, documentation and code quality."
-      }
     ]
   },
   "experience": [
@@ -449,7 +427,7 @@
   "skills": [
     {
       "category": "Backend & architecture",
-      "items": ["C#", ".NET Core", "ASP.NET Core", ".NET Framework", "Entity Framework Core", "LINQ", "REST APIs", "Microservices", "OpenAPI", "Swagger"]
+      "items": ["C#", ".NET Core", "Cold Fusion", "Go", "Python","ASP.NET Core", ".NET Framework", "Entity Framework Core", "LINQ", "REST APIs", "Microservices", "OpenAPI", "Swagger"]
     },
     {
       "category": "Data & search",
@@ -460,14 +438,63 @@
       "items": ["Azure", "AWS", "Docker", "Kubernetes", "GitHub Actions", "Azure DevOps", "Kafka", "Jenkins"]
     },
     {
+      "category": "Engineering",
+      "items": ["System modernization", "API architecture", "Observability", "Performance"]
+    },
+    {
       "category": "Frontend & tools",
-      "items": ["React", "Angular", "Node.js", "TypeScript", "JavaScript", "Bootstrap", "HTML", "CSS/Sass", "Cursor", "Claude", "GitHub Copilot", "CodeRabbit", "SonarQube Cloud"]
+      "items": ["React", "Angular", "Node.js", "TypeScript", "JavaScript", "Bootstrap", "HTML", "CSS/Sass"]
+    },
+    {
+      "category": "AI-Native Development",
+      "items": ["Cursor", "Claude", "GitHub Copilot", "CodeRabbit", "AI-assisted development and technical workflows"]
     }
   ],
+  "skillLinks": {
+    "C#": "https://learn.microsoft.com/en-us/dotnet/csharp/",
+    ".NET Core": "https://dotnet.microsoft.com/",
+    "Cold Fusion": "https://www.adobe.com/products/coldfusion-family.html",
+    "Go": "https://go.dev/",
+    "Python": "https://www.python.org/",
+    "ASP.NET Core": "https://learn.microsoft.com/en-us/aspnet/core/",
+    ".NET Framework": "https://dotnet.microsoft.com/en-us/download/dotnet-framework",
+    "Entity Framework Core": "https://learn.microsoft.com/en-us/ef/core/",
+    "LINQ": "https://learn.microsoft.com/en-us/dotnet/csharp/linq/",
+    "OpenAPI": "https://www.openapis.org/",
+    "Swagger": "https://swagger.io/",
+    "SQL Server": "https://www.microsoft.com/en-us/sql-server/",
+    "PostgreSQL": "https://www.postgresql.org/",
+    "MongoDB": "https://www.mongodb.com/",
+    "Azure Cosmos DB": "https://azure.microsoft.com/en-us/products/cosmos-db/",
+    "MySQL": "https://www.mysql.com/",
+    "OpenSearch": "https://opensearch.org/",
+    "Redis": "https://redis.io/",
+    "Azure": "https://azure.microsoft.com/",
+    "AWS": "https://aws.amazon.com/",
+    "Docker": "https://www.docker.com/",
+    "Kubernetes": "https://kubernetes.io/",
+    "GitHub Actions": "https://github.com/features/actions",
+    "Azure DevOps": "https://azure.microsoft.com/en-us/products/devops/",
+    "Kafka": "https://kafka.apache.org/",
+    "Jenkins": "https://www.jenkins.io/",
+    "React": "https://react.dev/",
+    "Angular": "https://angular.dev/",
+    "Node.js": "https://nodejs.org/",
+    "TypeScript": "https://www.typescriptlang.org/",
+    "JavaScript": "https://developer.mozilla.org/en-US/docs/Web/JavaScript",
+    "Bootstrap": "https://getbootstrap.com/",
+    "HTML": "https://html.spec.whatwg.org/",
+    "CSS/Sass": "https://sass-lang.com/",
+    "Cursor": "https://cursor.com/",
+    "Claude": "https://claude.ai/",
+    "GitHub Copilot": "https://github.com/features/copilot",
+    "CodeRabbit": "https://www.coderabbit.ai/"
+  },
   "education": {
     "degree": "B.S. in Computer Science",
     "institution": "Universidad Politécnica de Sinaloa",
-    "note": "Professional license issued"
+    "note": "Professional license issued",
+    "travelDocuments": ["Passport", "U.S. Visa"]
   },
   "languages": [
     { "name": "Spanish", "proficiency": "Native" },

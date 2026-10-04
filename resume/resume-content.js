@@ -76,11 +76,12 @@ function renderAbout(about) {
     coreAreas.append(makeElement("li", "", requiredString(item, "a core area")));
   }
   container.append(coreAreas);
+  /*
 
   const tagGroups = makeElement("div", "about-tag-groups");
   tagGroups.append(renderTagGroup("Areas of focus", about.focusAreas));
   tagGroups.append(renderTagGroup("Tech Stack", about.techStack));
-  container.append(tagGroups);
+  container.append(tagGroups);*/
 }
 
 function renderProfileLinks(profile) {
@@ -94,21 +95,6 @@ function renderProfileLinks(profile) {
     makeSafeLink("GitHub", profile.github, "", true),
     resumeLink
   );
-}
-
-function renderWhatIDo(items) {
-  const container = document.querySelector('[data-resume-list="whatIDo.items"]');
-  requiredArray(items, "What I do items").forEach((item, index) => {
-    const card = makeElement("article", "what-i-do-card");
-    const number = makeElement("span", "what-i-do-number", String(index + 1).padStart(2, "0"));
-    number.setAttribute("aria-hidden", "true");
-    card.append(
-      number,
-      makeElement("h3", "", requiredString(item.title, "a service title")),
-      makeElement("p", "", requiredString(item.description, "a service description"))
-    );
-    container.append(card);
-  });
 }
 
 function renderDate(date) {
@@ -169,37 +155,57 @@ function renderExperience(experience) {
   }
 }
 
-function renderSkills(skills) {
+function renderSkills(skills, skillLinks) {
   const container = document.querySelector('[data-resume-list="skills"]');
   for (const skill of requiredArray(skills, "skill groups")) {
     const group = makeElement("article", "skill-group");
-    group.append(
-      makeElement("h3", "", requiredString(skill.category, "a skill category")),
-      makeElement("p", "", requiredArray(skill.items, skill.category).join(" · "))
-    );
+    group.append(makeElement("h3", "", requiredString(skill.category, "a skill category")));
+    const tags = makeElement("div", "focus-tags");
+    for (const item of requiredArray(skill.items, skill.category)) {
+      const label = requiredString(item, `a ${skill.category} item`);
+      const url = skillLinks?.[label];
+      tags.append(url
+        ? makeSafeLink(label, url, "skill-tag-link", true)
+        : makeElement("span", "", label));
+    }
+    group.append(tags);
     container.append(group);
   }
 }
 
 function renderEducation(education, languages) {
   const container = document.querySelector('[data-resume-container="education"]');
-  container.append(
-    makeElement("p", "card-label", "Education"),
-    makeElement("h3", "", requiredString(education.degree, "a degree")),
-    makeElement("p", "", requiredString(education.institution, "an educational institution")),
-    makeElement("p", "education-note", requiredString(education.note, "an education note")),
-    makeElement("div", "card-rule")
+  const degree = makeElement("article", "education-group");
+  degree.append(makeElement("h3", "", requiredString(education.degree, "a degree")));
+  const degreeDetails = makeElement("p", "education-inline-details");
+  degreeDetails.append(
+    requiredString(education.institution, "an educational institution"),
+    " · ",
+    requiredString(education.note, "an education note")
   );
-  container.append(makeElement("p", "card-label", "Languages"));
+  degree.append(degreeDetails);
+  container.append(degree);
+
+  const languageGroup = makeElement("article", "education-group");
+  languageGroup.append(makeElement("h3", "", "Languages"));
 
   for (const language of requiredArray(languages, "languages")) {
-    const row = makeElement("p", "language-row");
+    const row = makeElement("p", "education-inline-details");
     row.append(
-      makeElement("span", "", requiredString(language.name, "a language")),
-      makeElement("span", "", requiredString(language.proficiency, "a language proficiency"))
+      requiredString(language.name, "a language"),
+      " · ",
+      requiredString(language.proficiency, "a language proficiency")
     );
-    container.append(row);
+    languageGroup.append(row);
   }
+  container.append(languageGroup);
+
+  const travelGroup = makeElement("article", "education-group");
+  travelGroup.append(makeElement("h3", "", "Travel documents"));
+  const travelDocuments = requiredArray(education.travelDocuments, "travel documents")
+    .map(documentName => requiredString(documentName, "a travel document"));
+  travelGroup.append(makeElement("p", "education-inline-details", travelDocuments.join(" · ")));
+  container.append(travelGroup);
 }
 
 function applyResumeInfo(info) {
@@ -215,9 +221,8 @@ function applyResumeInfo(info) {
 
   renderProfileLinks(profile);
   renderAbout(info.about);
-  renderWhatIDo(info.whatIDo.items);
   renderExperience(info.experience);
-  renderSkills(info.skills);
+  renderSkills(info.skills, info.skillLinks);
   renderEducation(info.education, info.languages);
 
   document.querySelector(".brand").setAttribute("aria-label", `${profile.name} · home`);

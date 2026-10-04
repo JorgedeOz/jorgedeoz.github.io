@@ -1,10 +1,12 @@
 :root {
   color-scheme: light dark;
+  --section-sticky-top: 82px;
   --ink: #172b3a;
   --ink-soft: #3d5362;
   --muted: #71818c;
   --line: #dce4e8;
   --paper: #f5f7fa;
+  --experience-surface: #eef2f5;
   --white: #fff;
   --teal: #087d76;
   --teal-dark: #06655f;
@@ -23,6 +25,7 @@
   --muted: #9aabb3;
   --line: #30424b;
   --paper: #111b21;
+  --experience-surface: #17242b;
   --white: #19262d;
   --teal: #68c9bb;
   --teal-dark: #85d9cd;
@@ -396,7 +399,19 @@ p {
 }
 
 .section-index {
+  position: sticky;
+  z-index: 4;
+  top: var(--section-sticky-top);
+  padding-block: 0.4rem;
   margin-bottom: 1.2rem;
+  background: var(--paper);
+}
+
+.section-heading {
+  position: sticky;
+  z-index: 4;
+  top: var(--section-sticky-top);
+  background: var(--paper);
 }
 
 .section-index span {
@@ -425,50 +440,6 @@ p {
   color: var(--teal);
 }
 
-.what-i-do-section {
-  border-top: 1px solid var(--line);
-}
-
-.what-i-do-section > .section-index {
-  margin-bottom: 2rem;
-}
-
-.what-i-do-grid {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 1rem;
-}
-
-.what-i-do-card {
-  min-height: 190px;
-  padding: 1.35rem;
-  border: 1px solid var(--line);
-  border-radius: 9px;
-  background: var(--white);
-}
-
-.what-i-do-number {
-  display: block;
-  margin-bottom: 1.1rem;
-  color: var(--teal);
-  font-size: 0.72rem;
-  font-weight: 750;
-  letter-spacing: 0.1em;
-}
-
-.what-i-do-card h3 {
-  margin-bottom: 0.45rem;
-  color: var(--heading);
-  font-size: 1rem;
-}
-
-.what-i-do-card p {
-  margin: 0;
-  color: var(--muted);
-  font-size: 0.86rem;
-  line-height: 1.7;
-}
-
 .about-tag-groups {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -488,7 +459,10 @@ p {
   gap: 0.55rem;
 }
 
-.focus-tags span {
+.focus-tags span,
+.focus-tags .skill-tag-link {
+  display: inline-flex;
+  align-items: center;
   padding: 0.4rem 0.75rem;
   border: 1px solid var(--teal-light);
   border-radius: 999px;
@@ -498,12 +472,22 @@ p {
   font-weight: 650;
 }
 
+.focus-tags .skill-tag-link {
+  text-decoration: none;
+}
+
+.focus-tags .skill-tag-link:hover {
+  border-color: var(--teal);
+  color: var(--teal-dark);
+}
+
 .experience-section {
-  background: #eef2f5;
+  background: var(--experience-surface);
 }
 
 .experience-section .section-index {
   margin-bottom: 1.2rem;
+  background-color: var(--experience-surface);
 }
 
 .timeline {
@@ -606,74 +590,37 @@ p {
   display: block;
 }
 
-.skills-content {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) 225px;
-  align-items: start;
-  gap: 2rem;
-  padding-top: 0.45rem;
-}
-
 .skill-group {
   padding-block: 0.85rem;
   border-bottom: 1px solid var(--line);
 }
 
-.skill-group:first-child {
+.skill-group:first-child,
+.education-group:first-child {
   padding-top: 0;
 }
 
-.skill-group h3 {
+.skill-group h3,
+.education-group h3 {
   margin-bottom: 0.35rem;
   color: var(--ink);
   font-size: 0.88rem;
 }
 
-.skill-group p {
+.education-group {
+  padding-block: 0.85rem;
+  border-bottom: 1px solid var(--line);
+}
+
+.education-group p {
   margin: 0;
-  color: var(--muted);
-  font-size: 0.8rem;
-  line-height: 1.75;
-}
-
-.education-card {
-  padding: 1.15rem;
-  border: 1px solid var(--line);
-  border-radius: 9px;
-  background: var(--white);
-}
-
-.education-card h3 {
-  margin: 0.85rem 0 0.25rem;
-  color: var(--heading);
-  font-size: 0.98rem;
-  line-height: 1.45;
-}
-
-.education-card > p:not(.card-label, .education-note, .language-row) {
-  margin-bottom: 0;
   color: var(--ink-soft);
   font-size: 0.8rem;
   line-height: 1.55;
 }
 
-.education-note {
-  margin: 0.45rem 0 0;
-  color: var(--muted);
-  font-size: 0.72rem;
-}
-
-.language-row {
-  display: flex;
-  justify-content: space-between;
-  gap: 1rem;
-  margin: 0.45rem 0 0;
-  color: var(--ink-soft);
-  font-size: 0.78rem;
-}
-
-.language-row span:last-child {
-  color: var(--muted);
+.education-inline-details + .education-inline-details {
+  margin-top: 0.45rem;
 }
 
 .site-footer {
@@ -703,7 +650,7 @@ p {
 }
 
 :root[data-theme="dark"] .experience-section {
-  background: #17242b;
+  background: var(--experience-surface);
 }
 
 @media (max-width: 900px) {
@@ -732,16 +679,13 @@ p {
     min-height: 310px;
   }
 
-  .what-i-do-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-  .skills-content {
-    grid-template-columns: minmax(0, 1fr);
-  }
 }
 
 @media (max-width: 680px) {
+  :root {
+    --section-sticky-top: 96px;
+  }
+
   html {
     scroll-padding-top: 8rem;
   }
@@ -803,14 +747,6 @@ p {
     padding-block: 2rem;
   }
 
-  .what-i-do-grid {
-    grid-template-columns: minmax(0, 1fr);
-  }
-
-  .what-i-do-card {
-    min-height: 0;
-  }
-
   .about-tag-groups {
     grid-template-columns: minmax(0, 1fr);
   }
@@ -829,15 +765,6 @@ p {
 
   .job-location {
     margin-top: 0;
-  }
-
-  .skills-content {
-    grid-template-columns: minmax(0, 1fr);
-    gap: 1.5rem;
-  }
-
-  .education-card {
-    max-width: 360px;
   }
 
   .site-footer {
