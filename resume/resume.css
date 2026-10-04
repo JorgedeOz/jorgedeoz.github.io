@@ -11,11 +11,7 @@
   --teal-light: #d8eeeb;
   --navy: #102633;
   --heading: #102633;
-  --button-primary-text: #fff;
-  --button-light-bg: #fff;
-  --button-light-text: #102633;
   --brand-mark-text: #fff;
-  --contact-text: #fff;
   --font-body: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
   --font-display: Georgia, "Times New Roman", serif;
 }
@@ -33,11 +29,7 @@
   --teal-light: #243c40;
   --navy: #0b151b;
   --heading: #e8f0f3;
-  --button-primary-text: #0b151b;
-  --button-light-bg: #d5e9e5;
-  --button-light-text: #0b151b;
   --brand-mark-text: #e4ecef;
-  --contact-text: #e4ecef;
 }
 
 :root[data-theme="light"] {
@@ -112,16 +104,6 @@ a:focus-visible {
   gap: 2rem;
   background-color: var(--paper);
   border-bottom: 1px solid var(--line);
-}
-
-.site-header[data-surface="contact"] {
-  --ink: var(--contact-text);
-  --ink-soft: #b9c9ce;
-  --line: #617783;
-}
-
-.site-header[data-surface="contact"] .brand-mark {
-  background: rgba(255, 255, 255, 0.12);
 }
 
 .brand {
@@ -284,9 +266,7 @@ p {
   line-height: 1.02;
 }
 
-.hero h1 span,
-.section-heading h2 span,
-.contact-inner h2 span {
+.hero h1 span {
   color: var(--teal);
   font-style: italic;
   font-weight: 400;
@@ -298,50 +278,6 @@ p {
   color: var(--ink-soft);
   font-size: 1.08rem;
   line-height: 1.8;
-}
-
-.hero-actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.75rem;
-}
-
-.button {
-  min-height: 48px;
-  padding: 0.72rem 1.15rem;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.65rem;
-  border: 1px solid transparent;
-  border-radius: 6px;
-  font-size: 0.9rem;
-  font-weight: 700;
-  text-decoration: none;
-  transition: background-color 160ms ease, border-color 160ms ease, transform 160ms ease;
-}
-
-.button:hover {
-  transform: translateY(-2px);
-}
-
-.button-primary {
-  background: var(--teal);
-  color: var(--button-primary-text);
-}
-
-.button-primary:hover {
-  background: var(--teal-dark);
-}
-
-.button-secondary {
-  border-color: var(--line);
-  background: transparent;
-  color: var(--ink);
-}
-
-.button-secondary:hover {
-  border-color: var(--teal);
 }
 
 .contact-links {
@@ -451,20 +387,12 @@ p {
 }
 
 .about-section {
-  display: grid;
-  grid-template-columns: 0.9fr 1.1fr;
-  align-items: start;
-  gap: 5rem;
   border-top: 1px solid var(--line);
 }
 
-.about-section .section-heading {
-  position: sticky;
-  top: 7rem;
-}
-
-.about-section .section-heading .hero-actions {
-  margin-top: 2rem;
+.about-section > .contact-links {
+  margin-top: 0;
+  margin-bottom: 1.7rem;
 }
 
 .section-index {
@@ -475,23 +403,8 @@ p {
   color: var(--muted);
 }
 
-.section-heading h2,
-.contact-inner h2 {
-  margin-bottom: 0;
-  color: var(--heading);
-  font-family: var(--font-display);
-  font-size: clamp(2.45rem, 4vw, 3.65rem);
-  font-weight: 500;
-  letter-spacing: -0.05em;
-  line-height: 1.1;
-}
-
-.about-content {
-  padding-top: 2rem;
-  text-align: justify;
-}
-
 .about-content > p {
+  text-align: justify;
   margin-bottom: 1rem;
   color: var(--ink-soft);
   line-height: 1.85;
@@ -516,7 +429,7 @@ p {
   border-top: 1px solid var(--line);
 }
 
-.what-i-do-section > .section-heading {
+.what-i-do-section > .section-index {
   margin-bottom: 2rem;
 }
 
@@ -589,23 +502,8 @@ p {
   background: #eef2f5;
 }
 
-.experience-section .section-block {
-  display: grid;
-  grid-template-columns: 0.72fr 1.28fr;
-  align-items: start;
-  gap: 4.5rem;
-}
-
-.experience-section .section-heading {
-  position: sticky;
-  top: 7rem;
-}
-
-.heading-note {
-  max-width: 270px;
-  margin-top: 1.2rem;
-  color: var(--muted);
-  font-size: 0.9rem;
+.experience-section .section-index {
+  margin-bottom: 1.2rem;
 }
 
 .timeline {
@@ -705,9 +603,7 @@ p {
 }
 
 .skills-section {
-  display: grid;
-  grid-template-columns: 0.9fr 1.1fr;
-  gap: 5rem;
+  display: block;
 }
 
 .skills-content {
@@ -780,76 +676,6 @@ p {
   color: var(--muted);
 }
 
-.contact-section {
-  background:
-    radial-gradient(ellipse at 88% 50%, rgba(21, 87, 91, 0.38), transparent 40%),
-    var(--navy);
-  color: var(--contact-text);
-}
-
-.contact-inner {
-  min-height: 335px;
-  padding-block: 5rem;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 3rem;
-}
-
-.contact-inner .section-index {
-  color: #8dd2c7;
-}
-
-.contact-inner h2 {
-  color: var(--contact-text);
-}
-
-.contact-inner h2 span {
-  color: #8dd2c7;
-}
-
-.contact-copy {
-  margin: 1rem 0 0;
-  color: #b9c9ce;
-  font-size: 0.9rem;
-}
-
-.contact-actions {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 0.75rem;
-}
-
-.button-light {
-  background: var(--button-light-bg);
-  color: var(--button-light-text);
-}
-
-.button-light:hover {
-  background: #e7f3f1;
-}
-
-.button-outline-light {
-  border-color: #617783;
-  color: var(--contact-text);
-}
-
-.button-outline-light:hover {
-  border-color: #8dd2c7;
-}
-
-.pdf-link {
-  margin-top: 0.25rem;
-  color: #b9c9ce;
-  font-size: 0.78rem;
-  text-decoration: none;
-}
-
-.pdf-link:hover {
-  color: var(--contact-text);
-}
-
 .site-footer {
   width: min(1180px, calc(100% - 3rem));
   min-height: 74px;
@@ -880,10 +706,6 @@ p {
   background: #17242b;
 }
 
-:root[data-theme="dark"] .button-light:hover {
-  background: #d5e9e5;
-}
-
 @media (max-width: 900px) {
   .site-header {
     gap: 1rem;
@@ -910,18 +732,8 @@ p {
     min-height: 310px;
   }
 
-  .about-section,
-  .skills-section {
-    gap: 3rem;
-  }
-
   .what-i-do-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-  .experience-section .section-block {
-    grid-template-columns: 0.6fr 1.4fr;
-    gap: 2.5rem;
   }
 
   .skills-content {
@@ -991,13 +803,6 @@ p {
     padding-block: 4.25rem;
   }
 
-  .about-section,
-  .experience-section .section-block,
-  .skills-section {
-    grid-template-columns: minmax(0, 1fr);
-    gap: 1.5rem;
-  }
-
   .what-i-do-grid {
     grid-template-columns: minmax(0, 1fr);
   }
@@ -1006,24 +811,8 @@ p {
     min-height: 0;
   }
 
-  .about-content {
-    padding-top: 0;
-  }
-
   .about-tag-groups {
     grid-template-columns: minmax(0, 1fr);
-  }
-
-  .experience-section .section-heading {
-    position: static;
-  }
-
-  .about-section .section-heading {
-    position: static;
-  }
-
-  .heading-note {
-    max-width: 400px;
   }
 
   .job-card {
@@ -1051,14 +840,6 @@ p {
     max-width: 360px;
   }
 
-  .contact-inner {
-    min-height: unset;
-    padding-block: 4.25rem;
-    align-items: flex-start;
-    flex-direction: column;
-    gap: 2rem;
-  }
-
   .site-footer {
     min-height: 70px;
   }
@@ -1071,15 +852,6 @@ p {
 
   .site-nav {
     gap: 0.75rem;
-  }
-
-  .hero-actions {
-    align-items: stretch;
-    flex-direction: column;
-  }
-
-  .hero-actions .button {
-    width: 100%;
   }
 
   .contact-links {
@@ -1112,9 +884,6 @@ p {
     --teal-light: #d8eeeb;
     --navy: #102633;
     --heading: #102633;
-    --button-primary-text: #fff;
-    --button-light-bg: #fff;
-    --button-light-text: #102633;
   }
 
   body {
@@ -1122,9 +891,7 @@ p {
   }
 
   .site-header,
-  .hero-actions,
   .scroll-cue,
-  .contact-section,
   .site-footer {
     display: none;
   }
@@ -1147,17 +914,6 @@ p {
 
   .experience-section {
     background: var(--white);
-  }
-
-  .what-i-do-section,
-  .experience-section .section-block,
-  .about-section,
-  .skills-section {
-    display: block;
-  }
-
-  .experience-section .section-heading {
-    position: static;
   }
 
   .job-card {

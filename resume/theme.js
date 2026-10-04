@@ -29,7 +29,6 @@ function updateHeaderSurface() {
   const pageBackgroundColor = getComputedStyle(document.body).backgroundColor;
 
   stickyHeader.style.backgroundColor = hasSectionBackground ? backgroundColor : pageBackgroundColor;
-  stickyHeader.dataset.surface = section?.classList.contains("contact-section") ? "contact" : "default";
 }
 
 function queueHeaderSurfaceUpdate() {

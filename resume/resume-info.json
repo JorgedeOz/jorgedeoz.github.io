@@ -13,9 +13,8 @@
     "copyrightYear": "2026"
   },
   "about": {
-    "heading": ["Thoughtful engineering.", "Systems built to last."],
     "paragraphs": [
-      "I'm a Senior Backend Engineer with 14+ years of experience designing and building scalable software systems, cloud-native services, APIs, and distributed architectures. My core expertise is C#/.NET, backend architecture, microservices, REST APIs, SQL Server, PostgreSQL, MongoDB, and cloud platforms including Azure and AWS. More recently, I've expanded into Go, Python, React, and AI-assisted engineering while working on SaaS and payroll platforms. I enjoy solving complex backend and architecture problems — modernizing legacy systems, designing event-driven services, building reliable APIs, improving observability, and developing systems that can scale.",
+      "Senior Backend Engineer with 14+ years of experience designing and building scalable software systems, cloud-native services, APIs, and distributed architectures. My core expertise is C#/.NET, backend architecture, microservices, REST APIs, SQL Server, PostgreSQL, MongoDB, and cloud platforms including Azure and AWS. More recently, I've expanded into Go, Python, React, and AI-assisted engineering while working on SaaS and payroll platforms. I enjoy solving complex backend and architecture problems — modernizing legacy systems, designing event-driven services, building reliable APIs, improving observability, and developing systems that can scale.",
       "I've worked with distributed teams across the US, Canada, UK, and Latin America, building software for SaaS, payroll, real estate, logistics, enterprise, and other technology-driven products. I'm interested in Senior Backend, Senior Software Engineer, Cloud, Platform, Distributed Systems, and AI-enabled engineering opportunities."
     ],
     "coreAreas": [
@@ -52,7 +51,6 @@
     ]
   },
   "whatIDo": {
-    "heading": ["From architecture", "to reliable delivery."],
     "items": [
       {
         "title": "Backend Architecture",
@@ -473,9 +471,5 @@
   "languages": [
     { "name": "Spanish", "proficiency": "Native" },
     { "name": "English", "proficiency": "Fluent" }
-  ],
-  "contact": {
-    "heading": ["Let’s build something", "meaningful."],
-    "description": "For engineering opportunities and collaborations · feel free to reach out."
-  }
+  ]
 }

@@ -49,17 +49,6 @@ function makeSafeLink(label, href, className, external = false) {
   return link;
 }
 
-function renderHeading(element, lines) {
-  const headingLines = requiredArray(lines, "heading lines");
-  if (headingLines.length !== 2) {
-    throw new Error("Resume section headings must contain exactly two lines.");
-  }
-
-  element.replaceChildren(document.createTextNode(requiredString(headingLines[0], "a heading")));
-  element.append(document.createElement("br"));
-  element.append(makeElement("span", "", requiredString(headingLines[1], "a heading")));
-}
-
 function renderTagGroup(title, items) {
   const group = makeElement("div", "about-tag-group");
   group.append(makeElement("h3", "", title));
@@ -96,10 +85,13 @@ function renderAbout(about) {
 
 function renderProfileLinks(profile) {
   const container = document.querySelector('[data-resume-list="profileLinks"]');
+  const resumeLink = makeSafeLink("Download PDF", profile.resumeFile);
+  resumeLink.download = "";
   container.replaceChildren(
     makeSafeLink(profile.email, `mailto:${requiredString(profile.email, "an email address")}`),
     makeSafeLink(profile.phoneDisplay, `tel:${requiredString(profile.phone, "a phone number")}`),
-    makeSafeLink("LinkedIn", profile.linkedin, "", true)
+    makeSafeLink("LinkedIn", profile.linkedin, "", true),
+    resumeLink
   );
 }
 
@@ -209,18 +201,6 @@ function renderEducation(education, languages) {
   }
 }
 
-function renderContactActions(profile) {
-  const container = document.querySelector('[data-resume-list="contactActions"]');
-  container.append(
-    makeSafeLink("Email me ↗", `mailto:${requiredString(profile.email, "an email address")}`, "button button-light"),
-    makeSafeLink("Connect on LinkedIn", profile.linkedin, "button button-outline-light", true)
-  );
-
-  const resumeLink = makeSafeLink("Prefer a PDF? Download my resume ↓", profile.resumeFile, "pdf-link");
-  resumeLink.download = "";
-  container.append(resumeLink);
-}
-
 function applyResumeInfo(info) {
   const profile = info.profile;
   requiredString(profile.name, "a name");
@@ -231,14 +211,6 @@ function applyResumeInfo(info) {
     const value = element.dataset.resume.split(".").reduce((current, key) => current?.[key], info);
     element.textContent = requiredString(value, element.dataset.resume);
   }
-  for (const element of document.querySelectorAll("[data-resume-heading]")) {
-    const value = element.dataset.resumeHeading.split(".").reduce((current, key) => current?.[key], info);
-    renderHeading(element, value);
-  }
-  for (const element of document.querySelectorAll("[data-resume-link]")) {
-    const value = element.dataset.resumeLink.split(".").reduce((current, key) => current?.[key], info);
-    element.href = requiredString(value, element.dataset.resumeLink);
-  }
 
   renderProfileLinks(profile);
   renderAbout(info.about);
@@ -246,7 +218,6 @@ function applyResumeInfo(info) {
   renderExperience(info.experience);
   renderSkills(info.skills);
   renderEducation(info.education, info.languages);
-  renderContactActions(profile);
 
   document.querySelector(".brand").setAttribute("aria-label", `${profile.name} · home`);
   document.querySelector(".contact-links").setAttribute("aria-label", "Contact links");

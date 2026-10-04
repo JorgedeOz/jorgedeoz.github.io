@@ -39,7 +39,6 @@
         <a href="#what-i-do">What I do</a>
         <a href="#experience">Experience</a>
         <a href="#skills">Skills</a>
-        <a href="#contact">Contact</a>
         <button class="theme-toggle" type="button" aria-label="Switch to dark theme" aria-pressed="false">
           <span class="theme-toggle-icon" aria-hidden="true">☾</span>
           <span class="theme-toggle-label">Dark</span>
@@ -51,59 +50,34 @@
       <p class="resume-load-status" role="status">Loading resume…</p>
       <p class="resume-load-error" role="alert" hidden></p>
 
-      <section class="section-shell section-block about-section" id="about" aria-labelledby="about-title">
+      <section class="section-shell section-block about-section" id="about" aria-label="About">
         <div class="section-heading">
           <p class="section-index">01 <span>/</span> About</p>
-          <h2 id="about-title" data-resume-heading="about.heading"></h2>
-          <div class="hero-actions">
-            <a class="button button-primary" data-resume-link="profile.resumeFile" download>Download resume <span aria-hidden="true">↓</span></a>
-            <a class="button button-secondary" href="#experience">Explore experience</a>
-          </div>
-          <div class="contact-links" aria-label="Contact links" data-resume-list="profileLinks"></div>
         </div>
+        <div class="contact-links" aria-label="Contact links" data-resume-list="profileLinks"></div>
         <div class="about-content" data-resume-container="about"></div>
       </section>
 
-      <section class="section-shell section-block what-i-do-section" id="what-i-do" aria-labelledby="what-i-do-title">
-        <div class="section-heading">
-          <p class="section-index">02 <span>/</span> What I do</p>
-          <h2 id="what-i-do-title" data-resume-heading="whatIDo.heading"></h2>
-        </div>
+      <section class="section-shell section-block what-i-do-section" id="what-i-do" aria-label="What I do">
+        <p class="section-index">02 <span>/</span> What I do</p>
         <div class="what-i-do-grid" data-resume-list="whatIDo.items"></div>
       </section>
 
-      <section class="experience-section" id="experience" aria-labelledby="experience-title">
+      <section class="experience-section" id="experience" aria-label="Experience">
         <div class="section-shell section-block">
-          <div class="section-heading">
-            <p class="section-index">03 <span>/</span> Experience</p>
-            <h2 id="experience-title">Where I’ve<br><span>made an impact.</span></h2>
-            <p class="heading-note">A selection of roles spanning backend, cloud, and full-stack engineering.</p>
-          </div>
+          <p class="section-index">03 <span>/</span> Experience</p>
           <div class="timeline" data-resume-list="experience"></div>
         </div>
       </section>
 
-      <section class="section-shell section-block skills-section" id="skills" aria-labelledby="skills-title">
-        <div class="section-heading">
-          <p class="section-index">04 <span>/</span> Skills &amp; education</p>
-          <h2 id="skills-title">The tools behind<br><span>the work.</span></h2>
-        </div>
+      <section class="section-shell section-block skills-section" id="skills" aria-label="Skills and education">
+        <p class="section-index">04 <span>/</span> Skills &amp; education</p>
         <div class="skills-content">
           <div class="skill-groups" data-resume-list="skills"></div>
           <aside class="education-card" data-resume-container="education"></aside>
         </div>
       </section>
 
-      <section class="contact-section" id="contact" aria-labelledby="contact-title">
-        <div class="section-shell contact-inner">
-          <div>
-            <p class="section-index">05 <span>/</span> Contact</p>
-            <h2 id="contact-title" data-resume-heading="contact.heading"></h2>
-            <p class="contact-copy" data-resume="contact.description"></p>
-          </div>
-          <div class="contact-actions" data-resume-list="contactActions"></div>
-        </div>
-      </section>
     </main>
 
     <footer class="site-footer">
