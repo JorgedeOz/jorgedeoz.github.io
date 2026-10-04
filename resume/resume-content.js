@@ -85,12 +85,13 @@ function renderAbout(about) {
 
 function renderProfileLinks(profile) {
   const container = document.querySelector('[data-resume-list="profileLinks"]');
-  const resumeLink = makeSafeLink("Download PDF", profile.resumeFile);
+  const resumeLink = makeSafeLink("Download Resume", profile.resumeFile);
   resumeLink.download = "";
   container.replaceChildren(
     makeSafeLink(profile.email, `mailto:${requiredString(profile.email, "an email address")}`),
     makeSafeLink(profile.phoneDisplay, `tel:${requiredString(profile.phone, "a phone number")}`),
     makeSafeLink("LinkedIn", profile.linkedin, "", true),
+    makeSafeLink("GitHub", profile.github, "", true),
     resumeLink
   );
 }

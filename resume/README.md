@@ -23,9 +23,9 @@ Edit [`resume-info.json`](./resume-info.json) to change content. Keep it valid J
 - Do not add comments or leave a trailing comma.
 - Experience entries render in the order they appear in the `experience` array.
 - Each experience entry needs a role, company and HTTPS company URL, start and end dates, a location, highlights, and technologies. An optional client can have its own HTTPS URL and location prefix.
-- Contact links accept email and telephone URLs; external company and LinkedIn links must use HTTPS.
+- Contact links accept email and telephone URLs; external company, LinkedIn, and GitHub links must use HTTPS.
 
-Contact details and the **Download PDF** text link appear together directly below the About label. There is no separate Contact section.
+Contact details and the **Download Resume** text link appear together directly below the About label. There is no separate Contact section.
 
 The PDF file path is set by `profile.resumeFile` and must resolve to a same-origin HTTP(S) URL. Keep the PDF in this folder or update that value and the matching repository file together.
 

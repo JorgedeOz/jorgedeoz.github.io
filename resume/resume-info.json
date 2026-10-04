@@ -2,13 +2,14 @@
   "profile": {
     "name": "Jorge Eduardo López Hernández",
     "shortName": "Jorge López Hernández",
-    "title": "Senior Backend Engineer | Cloud Distributed Systems | AI | C#/.NET | Microservices | Azure | AWS",
+    "title": "Senior Backend Engineer | Cloud & Distributed Systems | C#/.NET | Microservices | AWS | Azure | Go | Python",
     "location": "Monterrey, Mexico",
     "summary": "Senior Backend Engineer with 14+ years of experience designing and building scalable software systems, cloud-native services, APIs, and distributed architectures.",
     "email": "jorgedeoz1989@gmail.com",
     "phone": "+526691500816",
     "phoneDisplay": "+52 669 150 0816",
     "linkedin": "https://www.linkedin.com/in/jorgeeduardolopez1989/",
+    "github": "https://github.com/JorgedeOz",
     "resumeFile": "Resume.pdf",
     "copyrightYear": "2026"
   },
