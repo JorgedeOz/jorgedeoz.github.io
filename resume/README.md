@@ -8,11 +8,13 @@ This folder contains the resume website published at [`/resume/`](../). The page
 - [`resume-info.json`](./resume-info.json) is the source of truth for profile details, About copy, focus areas, tech stack, work history, skills and their official-site links, education, languages, and contact information.
 - [`resume-content.js`](./resume-content.js) fetches the JSON, validates required data, and builds the resume sections in the browser. It uses DOM methods and `textContent` for data values, and validates external links before adding them.
 - [`resume.css`](./resume.css) contains the responsive layout, light and dark themes, sticky navigation, print styles, and reduced-motion support.
-- [`theme.js`](./theme.js) applies the saved theme preference, follows the operating-system preference when no choice has been saved, and updates the sticky header background as sections scroll underneath it.
+- [`theme.js`](./theme.js) applies the saved theme preference, follows the operating-system preference when no choice has been saved, measures the header to keep section headings and anchor offsets below it, and updates the sticky header background as sections scroll underneath it.
 - [`favicon.svg`](./favicon.svg) is the resume's site icon.
 - [`Resume.pdf`](./Resume.pdf) is the downloadable PDF linked from the page.
 
 There are no dependencies to install.
+
+The navigation uses a compact, icon-only theme switcher to keep the section links prominent. Its accessible label and tooltip describe the next theme, and keyboard focus remains visible.
 
 ## Update the resume
 
@@ -65,5 +67,6 @@ If the Live Server extension is installed, open `resume/index.html`, choose **Op
 4. In **Network**, reload and confirm `resume-info.json`, `resume.css`, `resume-content.js`, `theme.js`, `favicon.svg`, and `Resume.pdf` return successfully. If data looks stale, disable the cache and reload.
 5. After editing the JSON, verify that the experience cards, tags, and contact links render as expected.
 6. Test the layout at desktop and mobile widths. Use the theme toggle to check light and dark appearances; with no saved theme choice, the page follows the browser or operating-system color preference.
+7. Scroll within each section and confirm its label stays visible immediately below the navigation until the section ends. Resize the viewport or increase the text size and check that headings still clear the header. Navigation links should land with the section label visible; printed headings should not be sticky.
 
 This site is static and GitHub Pages compatible: committing changes to this folder publishes them at the repository's `/resume/` path.

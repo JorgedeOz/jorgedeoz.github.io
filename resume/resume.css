@@ -45,7 +45,7 @@
 
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 6rem;
+  scroll-padding-top: calc(var(--section-sticky-top) + 1rem);
 }
 
 body {
@@ -73,7 +73,8 @@ a {
   color: inherit;
 }
 
-a:focus-visible {
+a:focus-visible,
+.theme-toggle:focus-visible {
   outline: 3px solid #e5a642;
   outline-offset: 4px;
   border-radius: 3px;
@@ -172,13 +173,13 @@ a:focus-visible {
 }
 
 .theme-toggle {
-  min-height: 38px;
-  padding: 0.45rem 0.8rem;
+  width: 32px;
+  height: 32px;
+  padding: 0;
   display: inline-flex;
   flex-shrink: 0;
   align-items: center;
   justify-content: center;
-  gap: 0.45rem;
   border: 1px solid var(--line);
   border-radius: 999px;
   background: transparent;
@@ -199,6 +200,10 @@ a:focus-visible {
 .theme-toggle-icon {
   font-size: 1rem;
   line-height: 1;
+}
+
+.theme-toggle-label {
+  display: none;
 }
 
 .section-shell {
@@ -404,13 +409,6 @@ p {
   top: var(--section-sticky-top);
   padding-block: 0.4rem;
   margin-bottom: 1.2rem;
-  background: var(--paper);
-}
-
-.section-heading {
-  position: sticky;
-  z-index: 4;
-  top: var(--section-sticky-top);
   background: var(--paper);
 }
 
@@ -682,14 +680,6 @@ p {
 }
 
 @media (max-width: 680px) {
-  :root {
-    --section-sticky-top: 96px;
-  }
-
-  html {
-    scroll-padding-top: 8rem;
-  }
-
   .site-header {
     width: 100%;
     min-height: 72px;
@@ -821,6 +811,10 @@ p {
   .scroll-cue,
   .site-footer {
     display: none;
+  }
+
+  .section-index {
+    position: static;
   }
 
   .hero,

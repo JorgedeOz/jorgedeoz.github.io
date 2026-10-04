@@ -13,6 +13,18 @@ if (!stickyHeader) {
 
 let headerSurfaceUpdateQueued = false;
 
+function updateStickyHeaderSize() {
+  document.documentElement.style.setProperty(
+    "--section-sticky-top",
+    `${stickyHeader.getBoundingClientRect().height}px`
+  );
+  queueHeaderSurfaceUpdate();
+}
+
+const headerResizeObserver = new ResizeObserver(updateStickyHeaderSize);
+headerResizeObserver.observe(stickyHeader);
+updateStickyHeaderSize();
+
 function updateHeaderSurface() {
   headerSurfaceUpdateQueued = false;
 
@@ -75,7 +87,7 @@ themeToggle.addEventListener("click", () => {
 });
 
 window.addEventListener("scroll", queueHeaderSurfaceUpdate, { passive: true });
-window.addEventListener("resize", queueHeaderSurfaceUpdate);
+window.addEventListener("resize", updateStickyHeaderSize);
 
 themePreference.addEventListener("change", (event) => {
   if (!getSavedTheme()) {
