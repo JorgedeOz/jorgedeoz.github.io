@@ -1,4 +1,4 @@
-const resumeDataUrl = new URL("resume-info.json", document.currentScript.src);
+const resumeDataUrl = new URL("../resources/resume-info.json", document.currentScript.src);
 
 function requiredString(value, description) {
   if (typeof value !== "string" || value.trim() === "") {

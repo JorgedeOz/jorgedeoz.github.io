@@ -9,7 +9,7 @@
     >
     <meta name="theme-color" content="#f5f7fa">
     <title>Resume</title>
-    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="icon" type="image/svg+xml" href="resources/favicon.svg">
     <script>
       try {
         const savedTheme = localStorage.getItem("resume-theme");
@@ -20,9 +20,9 @@
         document.documentElement.dataset.theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
       }
     </script>
-    <link rel="stylesheet" href="resume.css">
-    <script src="resume-content.js" defer></script>
-    <script src="theme.js" defer></script>
+    <link rel="stylesheet" href="css/resume.css">
+    <script src="js/resume-content.js" defer></script>
+    <script src="js/theme.js" defer></script>
   </head>
   <body>
     <a class="skip-link" href="#main">Skip to content</a>
